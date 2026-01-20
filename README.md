@@ -83,3 +83,56 @@ Files of interest
 - LibraryManagementSystem/Classes/Member.cs
 - LibraryManagementSystem/Classes/Library.cs
 - LibraryManagementSystem/Program.cs
+
+-------------------------------------------------
+|                   Library                     |
+-------------------------------------------------
+| - Books : List<Book>                          |
+| - Members : List<Member>                      |
+-------------------------------------------------
+| + AddBook(Book)                               |
+| + RemoveBook(int)                             |
+| + AddMember(Member)                           |
+| + RemoveMember(int)                           |
+| + BorrowBook(int bookId, int memberId)        |
+| + ReturnBook(int bookId, int memberId)        |
+| + ListBooks()                                 |
+| + ListMembers()                               |
+-------------------------------------------------
+        | composition (Library owns Books)
+        |
+        | 1 to many
+        v
+-------------------------------------------------
+|                    Book                       |<-------
+-------------------------------------------------       |
+| - Id : int                                   |        |
+| - Title : string                             |        |
+| - Author : string                            |        |
+| - IsAvailable : bool                         |        |
+-------------------------------------------------       |
+| + Book()                                     |        |
+| + override ToString() : string               |        |
+| + CheckAvailablity()                         |        |                            
+-------------------------------------------------       |
+        | composition (Library owns Members)            |
+        |                                               |
+        | 1 to many                                     |
+        v                                               |
+-------------------------------------------------       |
+|                   Member                     |        | 
+-------------------------------------------------       |
+| - Id : int                                   |        |
+| - Name : string                              |        |
+| - BorrowedBooks : List<Book>                 |        |
+-------------------------------------------------       |
+| + BorrowBook(Book)                           |        |
+| + ReturnBook(Book)                           |        | 
+| + override ToString() : string               |        |
+-------------------------------------------------       |
+        |                                               |
+        | aggregation (Member borrows Books)            |
+        |                                               |
+        | 1 to many                                     | 
+        ------------------------------------------------
+
